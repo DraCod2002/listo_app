@@ -8,7 +8,6 @@ import '../../widgets/cards/pickud_location_card.dart';
 import '../../widgets/forms/custom_appbar.dart';
 import '../../widgets/forms/custom_button.dart';
 
-
 class OrderConfirmationScreen extends StatelessWidget {
   final String? orderId;
   final List<OrderItem>? orderItems;
@@ -36,38 +35,35 @@ class OrderConfirmationScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: const CustomAppBar(
-        title: '',
-        showBackButton: false,
-      ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(AppSizes.paddingM),
+        padding: const EdgeInsets.all(AppSizes.paddingL),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const SizedBox(height: AppSizes.spaceXL),
             // Header
             _buildHeader(displayOrderId),
-            
-            const SizedBox(height: AppSizes.spaceXL),
-            
+
+            const SizedBox(height: AppSizes.spaceS),
+
             // Order summary card
             OrderConfirmationCard(
               orderItems: displayOrderItems,
               totalAmount: displayTotalAmount,
             ),
-            
+
             const SizedBox(height: AppSizes.spaceL),
-            
+
             // Pickup location
             PickupLocationCard(location: displayPickupLocation),
-            
+
             const SizedBox(height: AppSizes.spaceL),
-            
+
             // Estimated time
-             EstimatedTimeWidget(time: displayEstimatedTime),
-            
+            EstimatedTimeWidget(time: displayEstimatedTime),
+
             const SizedBox(height: AppSizes.spaceXXL),
-            
+
             // Action buttons
             _buildActionButtons(context),
           ],
@@ -80,47 +76,42 @@ class OrderConfirmationScreen extends StatelessWidget {
     return Column(
       children: [
         // Logo
-        const Text(
-          AppStrings.appName,
-          style: TextStyle(
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-            color: AppColors.primary,
-            letterSpacing: 1.2,
-          ),
+        Image.asset(
+          'assets/images/listo_logo.png',
+          height: 50,
         ),
-        
+
         const SizedBox(height: AppSizes.spaceL),
-        
+
         // Thank you message
         const Text(
           '¡Gracias por tu compra!',
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 26,
             fontWeight: FontWeight.w600,
             color: AppColors.textPrimary,
           ),
         ),
-        
+
         const SizedBox(height: AppSizes.spaceS),
-        
+
         // Order ID
         Text(
           'Pedido #$displayOrderId',
           style: const TextStyle(
-            fontSize: 16,
+            fontSize: 18,
             color: AppColors.primary,
             fontWeight: FontWeight.w500,
           ),
         ),
-        
+
         const SizedBox(height: AppSizes.spaceXS),
-        
+
         // Order status
         const Text(
           'Pedido en proceso',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 18,
             color: AppColors.textSecondary,
             fontWeight: FontWeight.w400,
           ),
@@ -160,9 +151,9 @@ class OrderConfirmationScreen extends StatelessWidget {
           textColor: AppColors.primary,
           borderColor: AppColors.primary,
         ),
-        
+
         const SizedBox(height: AppSizes.spaceM),
-        
+
         // Back to store button
         CustomButton(
           text: 'Volver a la tienda',

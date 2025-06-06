@@ -19,7 +19,8 @@ class CustomCheckbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: padding ?? const EdgeInsets.symmetric(vertical: AppSizes.paddingS),
+      padding:
+          padding ?? const EdgeInsets.symmetric(vertical: AppSizes.paddingS),
       child: Row(
         children: [
           SizedBox(
@@ -29,7 +30,7 @@ class CustomCheckbox extends StatelessWidget {
               value: value,
               onChanged: onChanged,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(AppSizes.radiusXS),
+                borderRadius: BorderRadius.circular(AppSizes.iconXL),
               ),
             ),
           ),
@@ -38,9 +39,9 @@ class CustomCheckbox extends StatelessWidget {
             child: Text(
               title,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: AppColors.textPrimary,
-                fontSize: 20,
-              ),
+                    color: AppColors.textPrimary,
+                    fontSize: 20,
+                  ),
             ),
           ),
         ],

@@ -32,44 +32,11 @@ class PaymentButtons extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Información de pago
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppSizes.paddingM,
-                vertical: AppSizes.paddingS,
-              ),
-              decoration: BoxDecoration(
-                color: AppColors.grey100,
-                borderRadius: BorderRadius.circular(AppSizes.radiusS),
-              ),
-              child: Row(
-                children: const [
-                  Icon(
-                    Icons.info_outline,
-                    size: AppSizes.iconS,
-                    color: AppColors.textSecondary,
-                  ),
-                  SizedBox(width: AppSizes.spaceS),
-                  Expanded(
-                    child: Text(
-                      'El pago se realiza solo con Apple Pay',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            
-           const SizedBox(height: AppSizes.spaceM),
-            
             // Botón Apple Pay
             _buildApplePayButton(context),
-            
+
             const SizedBox(height: AppSizes.spaceS),
-            
+
             // Botón volver a la tienda
             _buildBackToStoreButton(),
           ],
@@ -79,15 +46,15 @@ class PaymentButtons extends StatelessWidget {
   }
 
   Widget _buildApplePayButton(BuildContext context) {
-    return  Container(
+    return Container(
       width: double.infinity,
       height: AppSizes.buttonHeight,
       child: ElevatedButton(
-        onPressed: (){
+        onPressed: () {
           Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                              builder: (context) => const  OrderConfirmationScreen()),
-                        );
+            MaterialPageRoute(
+                builder: (context) => const OrderConfirmationScreen()),
+          );
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.black,
@@ -118,24 +85,13 @@ class PaymentButtons extends StatelessWidget {
                 ),
               ),
             ),
-           const SizedBox(width: AppSizes.spaceS),
-           const Text(
-            
+            const SizedBox(width: AppSizes.spaceS),
+            const Text(
               'Pagar con Apple Pay',
               style: TextStyle(
                 color: AppColors.white,
-                fontSize: 16,
+                fontSize: 20,
                 fontWeight: FontWeight.w600,
-              ),
-            ),
-            Spacer(),
-            
-            Text(
-              'S/ ${total.toStringAsFixed(2)}',
-              style: const TextStyle(
-                color: AppColors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
               ),
             ),
           ],
@@ -160,7 +116,7 @@ class PaymentButtons extends StatelessWidget {
           'Volver a la tienda',
           style: TextStyle(
             color: AppColors.primary,
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: FontWeight.w600,
           ),
         ),

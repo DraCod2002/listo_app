@@ -35,7 +35,8 @@ class _CartScreenState extends State<CartScreen> {
 
   bool sendReceipt = true;
 
-  double get subtotal => cartItems.fold(0.0, (sum, item) => sum + (item.price * item.quantity));
+  double get subtotal =>
+      cartItems.fold(0.0, (sum, item) => sum + (item.price * item.quantity));
   double get taxes => 2.00;
   double get total => subtotal + taxes;
 
@@ -61,7 +62,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.white,
       appBar: _buildAppBar(),
       body: Column(
         children: [
@@ -72,17 +73,20 @@ class _CartScreenState extends State<CartScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: AppSizes.spaceM),
-                  
+
                   // Items del carrito
                   if (cartItems.isNotEmpty) ...[
-                    ...cartItems.map((item) => CartItemCard(
-                      item: item,
-                      onQuantityChanged: (newQuantity) => _updateQuantity(item.id, newQuantity),
-                      onRemove: () => _removeItem(item.id),
-                    )).toList(),
-                    
+                    ...cartItems
+                        .map((item) => CartItemCard(
+                              item: item,
+                              onQuantityChanged: (newQuantity) =>
+                                  _updateQuantity(item.id, newQuantity),
+                              onRemove: () => _removeItem(item.id),
+                            ))
+                        .toList(),
+
                     const SizedBox(height: AppSizes.spaceL),
-                    
+
                     // Resumen del pedido
                     OrderSummaryCard(
                       subtotal: subtotal,
@@ -90,17 +94,17 @@ class _CartScreenState extends State<CartScreen> {
                       total: total,
                       deliveryTime: '15-20 min',
                     ),
-                    
-                   const SizedBox(height: AppSizes.spaceM),
-                    
+
+                    const SizedBox(height: AppSizes.spaceM),
+
                     // Checkbox enviar boleta
                     _buildReceiptCheckbox(),
-                    
+
                     const SizedBox(height: AppSizes.spaceL),
-                    
+
                     // Productos de última hora
                     LastHourProducts(),
-                    
+
                     const SizedBox(height: AppSizes.spaceL),
                   ] else ...[
                     _buildEmptyCart(),
@@ -109,7 +113,7 @@ class _CartScreenState extends State<CartScreen> {
               ),
             ),
           ),
-          
+
           // Botones de pago
           if (cartItems.isNotEmpty)
             PaymentButtons(
@@ -125,17 +129,9 @@ class _CartScreenState extends State<CartScreen> {
     return AppBar(
       backgroundColor: AppColors.white,
       elevation: 0,
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back, color: AppColors.black),
-        onPressed: () => Navigator.pop(context),
-      ),
-      title: const  Text(
-        'LISTO',
-        style: TextStyle(
-          color: AppColors.primary,
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-        ),
+      title: Image.asset(
+        'assets/images/listo_logo.png',
+        height: 44,
       ),
       centerTitle: true,
     );
@@ -172,7 +168,9 @@ class _CartScreenState extends State<CartScreen> {
               height: AppSizes.checkboxSize,
               decoration: BoxDecoration(
                 color: sendReceipt ? AppColors.primary : Colors.transparent,
-                border: sendReceipt ? null : Border.all(color: AppColors.checkboxBorder),
+                border: sendReceipt
+                    ? null
+                    : Border.all(color: AppColors.checkboxBorder),
                 borderRadius: BorderRadius.circular(AppSizes.radiusXS),
               ),
               child: sendReceipt
@@ -231,7 +229,7 @@ class _CartScreenState extends State<CartScreen> {
   void _handleApplePayment() {
     // Implementar lógica de pago con Apple Pay
     ScaffoldMessenger.of(context).showSnackBar(
-     const  SnackBar(
+      const SnackBar(
         content: Text('Procesando pago con Apple Pay...'),
         backgroundColor: AppColors.success,
       ),

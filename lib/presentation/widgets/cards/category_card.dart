@@ -16,41 +16,42 @@ class CategoryCard extends StatelessWidget {
     this.onTap,
   });
 
- @override
-Widget build(BuildContext context) {
-  return GestureDetector(
-    onTap: onTap,
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          padding: const EdgeInsets.all(AppSizes.paddingS), 
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: BorderRadius.circular(AppSizes.radiusM),
-          ),
-          child: Container(
-            width: AppSizes.iconXL,
-            height: AppSizes.iconXL,
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(AppSizes.paddingS),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(AppSizes.radiusS),
+              color: backgroundColor,
+              borderRadius: BorderRadius.circular(AppSizes.radiusM),
             ),
-            child: icon,
+            child: Container(
+              width: AppSizes.iconXL,
+              height: AppSizes.iconXL,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(AppSizes.radiusS),
+              ),
+              child: icon,
+            ),
           ),
-        ),
-        const SizedBox(height: AppSizes.spaceS),
-        Text(
-          title,
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-            color: AppColors.textPrimary,
-            fontWeight: FontWeight.w500,
-            fontSize: 14,
+          const SizedBox(height: AppSizes.spaceXS),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: AppColors.textPrimary,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14,
+                ),
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
-          textAlign: TextAlign.center,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
-      ],
-    ),
-  );
-}}
+        ],
+      ),
+    );
+  }
+}

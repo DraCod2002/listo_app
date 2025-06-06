@@ -44,9 +44,9 @@ class CustomButton extends StatelessWidget {
           shadowColor: Colors.transparent,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppSizes.buttonRadiusDefault),
-            side: border != null 
-              ? BorderSide(color: border, width: 1.5)
-              : BorderSide.none,
+            side: border != null
+                ? BorderSide(color: border, width: 1.5)
+                : BorderSide.none,
           ),
           padding: const EdgeInsets.symmetric(
             horizontal: AppSizes.paddingL,
@@ -54,22 +54,22 @@ class CustomButton extends StatelessWidget {
           ),
         ),
         child: isLoading
-          ? SizedBox(
-              height: 20,
-              width: 20,
-              child: CircularProgressIndicator(
-                strokeWidth: 2,
-                valueColor: AlwaysStoppedAnimation<Color>(txtColor),
+            ? SizedBox(
+                height: 20,
+                width: 20,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  valueColor: AlwaysStoppedAnimation<Color>(txtColor),
+                ),
+              )
+            : Text(
+                text,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: txtColor,
+                ),
               ),
-            )
-          : Text(
-              text,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: txtColor,
-              ),
-            ),
       ),
     );
   }

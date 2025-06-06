@@ -10,7 +10,7 @@ class AppTheme {
         seedColor: AppColors.primary,
         brightness: Brightness.light,
       ),
-      
+
       // AppBar Theme
       appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.surface,
@@ -23,7 +23,7 @@ class AppTheme {
           color: AppColors.primary,
         ),
       ),
-      
+
       // Elevated Button Theme (tu botón naranja reutilizable)
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -40,7 +40,7 @@ class AppTheme {
           ),
         ),
       ),
-      
+
       // Text Button Theme
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
@@ -51,7 +51,7 @@ class AppTheme {
           ),
         ),
       ),
-      
+
       // Checkbox Theme
       checkboxTheme: CheckboxThemeData(
         fillColor: MaterialStateProperty.resolveWith((states) {
@@ -69,7 +69,7 @@ class AppTheme {
           borderRadius: BorderRadius.circular(AppSizes.radiusXS),
         ),
       ),
-      
+
       // Text Theme
       textTheme: const TextTheme(
         // Títulos principales
@@ -88,7 +88,7 @@ class AppTheme {
           fontWeight: FontWeight.w600,
           color: AppColors.textPrimary,
         ),
-        
+
         // Títulos de sección
         titleLarge: TextStyle(
           fontSize: 18,
@@ -105,7 +105,7 @@ class AppTheme {
           fontWeight: FontWeight.w500,
           color: AppColors.textPrimary,
         ),
-        
+
         // Texto del cuerpo
         bodyLarge: TextStyle(
           fontSize: 16,
@@ -122,7 +122,7 @@ class AppTheme {
           fontWeight: FontWeight.normal,
           color: AppColors.textSecondary,
         ),
-        
+
         // Labels
         labelLarge: TextStyle(
           fontSize: 14,
@@ -140,10 +140,10 @@ class AppTheme {
           color: AppColors.textHint,
         ),
       ),
-      
+
       // Scaffold Theme
       scaffoldBackgroundColor: AppColors.surface,
-      
+
       // Card Theme
       cardTheme: CardTheme(
         color: AppColors.surface,
@@ -152,7 +152,7 @@ class AppTheme {
           borderRadius: BorderRadius.circular(AppSizes.radiusM),
         ),
       ),
-      
+
       // Divider Theme
       dividerTheme: const DividerThemeData(
         color: AppColors.divider,

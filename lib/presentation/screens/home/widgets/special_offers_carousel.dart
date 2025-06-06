@@ -83,9 +83,7 @@ class _SpecialOffersCarouselState extends State<SpecialOffersCarousel> {
                                 .textTheme
                                 .bodyMedium
                                 ?.copyWith(
-                                  color: AppColors.white,
-                                  fontSize: 18
-                                ),
+                                    color: AppColors.white, fontSize: 20),
                           ),
                         ],
                       ),

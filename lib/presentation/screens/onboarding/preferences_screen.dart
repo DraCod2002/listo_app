@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:listo_app/presentation/screens/HomeView.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_sizes.dart';
 import '../../../core/constants/app_strings.dart';
@@ -38,7 +39,7 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
             onPressed: () {
               Navigator.of(context).pop();
               Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => const HomeScreen()),
+                MaterialPageRoute(builder: (context) => HomeView()),
               );
             },
             child: const Text('OK'),
@@ -177,7 +178,7 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
               AppStrings.paymentInfo,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: AppColors.textSecondary,
-                    fontSize: 22,
+                    fontSize: 20,
                   ),
               textAlign: TextAlign.center,
             ),

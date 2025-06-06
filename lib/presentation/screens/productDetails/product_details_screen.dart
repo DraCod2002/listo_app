@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:listo_app/presentation/screens/cart/cart_screen.dart';
 
 import '../../../core/constants/app_colors.dart';
+import '../HomeView.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({super.key});
@@ -25,9 +26,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Botón de regreso
+                // Botón de regreso
                 IconButton(
                   icon: const Icon(Icons.arrow_back, color: Colors.black),
-                  onPressed: () => Navigator.of(context).pop(),
+                  onPressed: () {
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => HomeView()),
+                      (route) => false,
+                    );
+                  },
                 ),
                 // Imagen del producto
                 Center(
@@ -59,15 +66,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        border:
-                            Border.all(color: AppColors.primary, width: 1.5),
+                        border: Border.all(color: AppColors.black, width: 1.5),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Row(
                         children: [
                           IconButton(
                             icon: const Icon(Icons.remove,
-                                color: AppColors.primary),
+                                color: AppColors.black),
                             onPressed: () {
                               setState(() {
                                 if (quantity > 1) quantity--;
@@ -76,11 +82,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ),
                           Text(
                             '$quantity',
-                            style: const TextStyle(fontSize: 18),
+                            style: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w600),
                           ),
                           IconButton(
-                            icon:
-                                const Icon(Icons.add, color: AppColors.primary),
+                            icon: const Icon(Icons.add, color: AppColors.black),
                             onPressed: () {
                               setState(() {
                                 quantity++;
@@ -96,7 +102,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.primary,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(16),
                           ),
                           padding: const EdgeInsets.symmetric(vertical: 16),
                         ),
@@ -119,32 +125,42 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ],
                 ),
                 const SizedBox(height: 24),
-                // Información nutricional
-                Row(
-                  children: [
-                    const Text(
-                      'Información nutricional',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
-                    ),
-                    const SizedBox(width: 6),
-                    Icon(Icons.info_outline, color: Colors.grey[500], size: 18),
-                  ],
-                ),
-                const SizedBox(height: 12),
+
+// Información nutricional
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[100],
+                    color: Colors.grey[50],
                     borderRadius: BorderRadius.circular(12),
                   ),
                   padding:
                       const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: const [
-                      _NutritionInfo(value: '545 kcal', label: 'Calorías'),
-                      _NutritionInfo(value: '35g', label: 'Carb'),
-                      _NutritionInfo(value: '45g', label: 'Proteína'),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Título e ícono dentro del container
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            'Información nutricional',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600, fontSize: 18),
+                          ),
+                          SizedBox(width: 6),
+                          Icon(Icons.info_outline,
+                              color: Colors.black, size: 20),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      // Información nutricional
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          _NutritionInfo(value: '545 kcal', label: 'Calorías'),
+                          _NutritionInfo(value: '35g', label: 'Carb'),
+                          _NutritionInfo(value: '45g', label: 'Proteína'),
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -152,7 +168,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 // Productos relacionados
                 const Text(
                   'Productos relacionados',
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                 ),
                 const SizedBox(height: 12),
                 SizedBox(
@@ -203,12 +219,13 @@ class _NutritionInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(value,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
         const SizedBox(height: 4),
         Text(label,
-            style: const TextStyle(color: Colors.black54, fontSize: 13)),
+            style: const TextStyle(color: Colors.black54, fontSize: 16)),
       ],
     );
   }
@@ -229,22 +246,20 @@ class _RelatedProduct extends StatelessWidget {
           width: 60,
           height: 60,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Colors.grey[50],
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: AppColors.primary, width: 1),
           ),
           child: Image.asset(image, fit: BoxFit.contain),
         ),
         const SizedBox(height: 6),
         Text(
           name,
-          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
         Text(
           price,
           style: const TextStyle(
-              fontSize: 12,
+              fontSize: 14,
               color: AppColors.primary,
               fontWeight: FontWeight.bold),
         ),
