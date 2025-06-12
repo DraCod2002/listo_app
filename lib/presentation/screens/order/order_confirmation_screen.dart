@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_sizes.dart';
 import '../../../core/constants/app_strings.dart';
@@ -7,6 +8,7 @@ import '../../widgets/cards/order_confirmation_card.dart';
 import '../../widgets/cards/pickud_location_card.dart';
 import '../../widgets/forms/custom_appbar.dart';
 import '../../widgets/forms/custom_button.dart';
+import '../HomeView.dart';
 
 class OrderConfirmationScreen extends StatelessWidget {
   final String? orderId;
@@ -58,7 +60,11 @@ class OrderConfirmationScreen extends StatelessWidget {
             PickupLocationCard(location: displayPickupLocation),
 
             const SizedBox(height: AppSizes.spaceL),
-
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: AppSizes.spaceS),
+              height: 1,
+              color: AppColors.divider,
+            ),
             // Estimated time
             EstimatedTimeWidget(time: displayEstimatedTime),
 
@@ -78,7 +84,7 @@ class OrderConfirmationScreen extends StatelessWidget {
         // Logo
         Image.asset(
           'assets/images/listo_logo.png',
-          height: 50,
+          height: 60,
         ),
 
         const SizedBox(height: AppSizes.spaceL),
@@ -87,7 +93,7 @@ class OrderConfirmationScreen extends StatelessWidget {
         const Text(
           '¡Gracias por tu compra!',
           style: TextStyle(
-            fontSize: 26,
+            fontSize: 28,
             fontWeight: FontWeight.w600,
             color: AppColors.textPrimary,
           ),
@@ -99,9 +105,9 @@ class OrderConfirmationScreen extends StatelessWidget {
         Text(
           'Pedido #$displayOrderId',
           style: const TextStyle(
-            fontSize: 18,
+            fontSize: 20,
             color: AppColors.primary,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
           ),
         ),
 
@@ -111,9 +117,9 @@ class OrderConfirmationScreen extends StatelessWidget {
         const Text(
           'Pedido en proceso',
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 20,
             color: AppColors.textSecondary,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ],
@@ -158,7 +164,7 @@ class OrderConfirmationScreen extends StatelessWidget {
         CustomButton(
           text: 'Volver a la tienda',
           onPressed: () {
-            Navigator.of(context).popUntil((route) => route.isFirst);
+            context.push('/home-view');
           },
           backgroundColor: AppColors.primary,
           textColor: AppColors.white,

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "128495600556",
+    "project_id": "primax-440119",
+    "storage_bucket": "primax-440119.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128495600556:android:aacf445e7161babc54b009",
+        "android_client_info": {
+          "package_name": "com.primax.listo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYXyUyEOhQgaNnefQydlpeWBaiATcWEuw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128495600556:android:8e9935af60cc2a2854b009",
+        "android_client_info": {
+          "package_name": "com.primax.safe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYXyUyEOhQgaNnefQydlpeWBaiATcWEuw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -20,9 +20,9 @@ class EstimatedTimeWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSizes.radiusM),
         boxShadow: [
           BoxShadow(
-            color: AppColors.black.withOpacity(0.08),
+            color: AppColors.black.withOpacity(0.02),
             blurRadius: 8,
-            offset: const Offset(0, 2),
+            offset: const Offset(0, 1),
           ),
         ],
       ),
@@ -32,7 +32,7 @@ class EstimatedTimeWidget extends StatelessWidget {
           const Text(
             'Hora de entrega estimada',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: FontWeight.w600,
               color: AppColors.textPrimary,
             ),
@@ -43,7 +43,7 @@ class EstimatedTimeWidget extends StatelessWidget {
           Text(
             time,
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 18,
               color: AppColors.textSecondary,
             ),
           ),

@@ -62,7 +62,7 @@ class LastHourProducts extends StatelessWidget {
                   vertical: 2,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.warning,
+                  color: AppColors.primary,
                   borderRadius: BorderRadius.circular(AppSizes.radiusS),
                 ),
                 child: const Text(
@@ -116,7 +116,7 @@ class LastHourProducts extends StatelessWidget {
               child: Center(
                 child: Text(
                   product.image,
-                  style: TextStyle(fontSize: 32),
+                  style: TextStyle(fontSize: 40),
                 ),
               ),
             ),
@@ -124,7 +124,7 @@ class LastHourProducts extends StatelessWidget {
             Text(
               product.name,
               style:const TextStyle(
-                fontSize: 12,
+                fontSize: 16,
                 fontWeight: FontWeight.w500,
                 color: AppColors.textPrimary,
               ),
@@ -136,7 +136,7 @@ class LastHourProducts extends StatelessWidget {
             Text(
               'S/ ${product.price.toStringAsFixed(2)}',
               style: const TextStyle(
-                fontSize: 12,
+                fontSize: 16,
                 color: AppColors.primary,
                 fontWeight: FontWeight.bold,
               ),

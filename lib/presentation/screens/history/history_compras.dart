@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/app_colors.dart';
+import '../../widgets/forms/custom_button.dart';
+import '../HomeView.dart';
+
 class HistorialComprasScreen extends StatelessWidget {
   const HistorialComprasScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F0), // Fondo beige claro
+      backgroundColor: AppColors.surface,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -17,7 +21,7 @@ class HistorialComprasScreen extends StatelessWidget {
               const Text(
                 'Historial\nde compras',
                 style: TextStyle(
-                  fontSize: 28,
+                  fontSize: 38,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                   height: 1.1,
@@ -62,6 +66,16 @@ class HistorialComprasScreen extends StatelessWidget {
                   ],
                 ),
               ),
+
+              // Botón volver a la tienda (reutilizado)
+              const SizedBox(height: 24),
+              CustomButton(
+                text: 'Volver a mi perfil',
+                onPressed:  () => Navigator.of(context).pop(),
+                backgroundColor: AppColors.primary,
+                textColor: AppColors.white,
+              ),
+              const SizedBox(height: 16),
             ],
           ),
         ),
@@ -88,7 +102,7 @@ class HistorialComprasScreen extends StatelessWidget {
           Text(
             'Pedido $pedidoNum',
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
               color: Colors.black,
             ),
@@ -109,7 +123,7 @@ class HistorialComprasScreen extends StatelessWidget {
                         child: Text(
                           producto,
                           style: const TextStyle(
-                            fontSize: 14,
+                            fontSize: 15,
                             color: Colors.black87,
                           ),
                         ),
@@ -164,28 +178,6 @@ class HistorialComprasScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-// Ejemplo de uso en main.dart
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Historial de Compras',
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
-        fontFamily: 'Roboto',
-      ),
-      home: const HistorialComprasScreen(),
-      debugShowCheckedModeBanner: false,
     );
   }
 }

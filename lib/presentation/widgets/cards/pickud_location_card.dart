@@ -14,15 +14,15 @@ class PickupLocationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(AppSizes.paddingL),
+      padding: const EdgeInsets.all(AppSizes.paddingM),
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(AppSizes.radiusM),
         boxShadow: [
           BoxShadow(
-            color: AppColors.black.withOpacity(0.08),
+            color: AppColors.black.withOpacity(0.02),
             blurRadius: 8,
-            offset: const Offset(0, 2),
+            offset: const Offset(0, 1),
           ),
         ],
       ),
@@ -32,7 +32,7 @@ class PickupLocationCard extends StatelessWidget {
           const Text(
             'Lugar de recogida',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: FontWeight.w600,
               color: AppColors.textPrimary,
             ),
@@ -43,7 +43,7 @@ class PickupLocationCard extends StatelessWidget {
           Text(
             location,
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 18,
               color: AppColors.textSecondary,
             ),
           ),

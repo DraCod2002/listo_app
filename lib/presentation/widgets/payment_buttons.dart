@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:listo_app/presentation/screens/order/order_confirmation_screen.dart';
 import 'package:listo_app/presentation/widgets/cards/order_confirmation_card.dart';
 import '../../../../core/constants/app_colors.dart';
@@ -18,30 +20,15 @@ class PaymentButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(AppSizes.paddingM),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: Offset(0, -5),
-          ),
-        ],
-      ),
-      child: SafeArea(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           children: [
             // Botón Apple Pay
             _buildApplePayButton(context),
 
-            const SizedBox(height: AppSizes.spaceS),
-
             // Botón volver a la tienda
-            _buildBackToStoreButton(),
+            //_buildBackToStoreButton(),
           ],
         ),
-      ),
     );
   }
 
@@ -51,10 +38,7 @@ class PaymentButtons extends StatelessWidget {
       height: AppSizes.buttonHeight,
       child: ElevatedButton(
         onPressed: () {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-                builder: (context) => const OrderConfirmationScreen()),
-          );
+          context.push('/apple-pay');
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.black,
@@ -71,18 +55,10 @@ class PaymentButtons extends StatelessWidget {
               width: 24,
               height: 24,
               decoration: BoxDecoration(
-                color: AppColors.white,
                 borderRadius: BorderRadius.circular(4),
               ),
               child: const Center(
-                child: Text(
-                  '',
-                  style: TextStyle(
-                    color: AppColors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                child: Icon(FontAwesomeIcons.apple)
               ),
             ),
             const SizedBox(width: AppSizes.spaceS),
@@ -100,7 +76,7 @@ class PaymentButtons extends StatelessWidget {
     );
   }
 
-  Widget _buildBackToStoreButton() {
+  /*Widget _buildBackToStoreButton() {
     return Container(
       width: double.infinity,
       height: AppSizes.buttonHeight,
@@ -122,5 +98,5 @@ class PaymentButtons extends StatelessWidget {
         ),
       ),
     );
-  }
+  }*/
 }

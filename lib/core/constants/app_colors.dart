@@ -5,9 +5,10 @@ class AppColors {
   static const Color primary = Color(0xFFFF5000);
   static const Color primaryDark = Color(0xFFE64A19);
   static const Color primaryLight = Color(0xFFFF8A65);
+  static const Color primaryLovers = Color(0xFFFFC9B9);
 
   // Colores de fondo
-  static const Color background = Color(0xFFF5F5F5);
+  static const Color background = Color(0xFFFFFEFE);
   static const Color surface = Color(0xFFFFFFFF);
 
   // Colores de texto
@@ -32,7 +33,7 @@ class AppColors {
 
   // Colores específicos de la app
   static const Color checkboxBorder = Color(0xFFE0E0E0);
-  static const Color divider = Color(0xFFE0E0E0);
+  static const Color divider = Color(0xFFEDEDED);
   static const Color searchBackground = Color(0xFFF5F5F5);
   static const Color categoryBackground1 = Color(0xFFFFF3E0); // Naranja claro
   static const Color categoryBackground2 = Color(0xFFE8F5E8); // Verde claro

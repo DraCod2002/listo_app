@@ -34,9 +34,9 @@ class CartItemCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppSizes.radiusM),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 4,
-              offset: Offset(0, 2),
+              color: Colors.black.withOpacity(0.03),
+              blurRadius: 8,
+              offset: Offset(0, 1),
             ),
           ],
         ),
@@ -111,8 +111,8 @@ class CartItemCard extends StatelessWidget {
           Text(
             item.name,
             style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
               color: AppColors.textPrimary,
             ),
           ),
@@ -120,9 +120,9 @@ class CartItemCard extends StatelessWidget {
           Text(
             'S/ ${item.price.toStringAsFixed(2)}',
             style:const  TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               color: AppColors.textSecondary,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ],

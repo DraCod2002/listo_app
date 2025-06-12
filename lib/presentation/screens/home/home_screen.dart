@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:listo_app/presentation/screens/history/history_compras.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_sizes.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../widgets/cards/category_card.dart';
 import '../../widgets/cards/product_card.dart';
-import '../productDetails/product_details_screen.dart';
-import 'widgets/special_offers_carousel.dart';
+import '../../widgets/forms/custom_primax_lovers_buttom.dart';
+import '../product-details/product_details_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -28,13 +29,13 @@ class _HomeScreenState extends State<HomeScreen> {
             elevation: 0,
             expandedHeight: 85,
             floating: true,
-            snap: true, 
-            pinned: false, 
+            snap: true,
+            pinned: false,
             automaticallyImplyLeading: false,
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
               title: Padding(
-                padding: const EdgeInsets.all(AppSizes.paddingXS),
+                padding: const EdgeInsets.all(3.0), // AppSizes.paddingXS
                 child: Row(
                   children: [
                     const Spacer(),
@@ -42,29 +43,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       'assets/images/listo_logo_home.png',
                       height: 45,
                     ),
-                    const Spacer(),
-                    const SizedBox(width: AppSizes.iconM),
+                    const Spacer(), // AppSizes.iconM
                   ],
                 ),
               ),
             ),
           ),
-          
+
           // Contenido principal
           SliverToBoxAdapter(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: AppSizes.spaceL),
-
-                // Carousel de ofertas especiales
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: AppSizes.paddingM),
-                  child: SpecialOffersCarousel(),
-                ),
-
-                const SizedBox(height: AppSizes.spaceXL),
-
                 // Sección de Categorías
                 Padding(
                   padding:
@@ -74,16 +65,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge
-                        ?.copyWith(fontWeight: FontWeight.w500, fontSize: 22),
+                        ?.copyWith(fontWeight: FontWeight.w700, fontSize: 22),
                   ),
                 ),
-
+                const SizedBox(height: AppSizes.spaceM),
                 // Grid de categorías
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: AppSizes.paddingM),
                   child: GridView.count(
                     shrinkWrap: true,
+                    padding: EdgeInsets.zero,
                     physics: const NeverScrollableScrollPhysics(),
                     crossAxisCount: 4,
                     mainAxisSpacing: AppSizes.spaceM,
@@ -98,7 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         backgroundColor: AppColors.categoryBackground1,
                         onTap: () {
-                          // Navegar a categoría de desayunos
+                          context.push('/break-fast');
+
                         },
                       ),
                       CategoryCard(
@@ -109,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         backgroundColor: AppColors.categoryBackground2,
                         onTap: () {
-                          // Navegar a categoría de almuerzos
+                          context.push('/lunch-fast');
                         },
                       ),
                       CategoryCard(
@@ -120,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         backgroundColor: AppColors.categoryBackground3,
                         onTap: () {
-                          // Navegar a categoría de cenas
+                          context.push('/break-fast');
                         },
                       ),
                       CategoryCard(
@@ -131,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         backgroundColor: AppColors.categoryBackground4,
                         onTap: () {
-                          // Navegar a categoría de bebidas
+                          context.push('/lunch-fast');
                         },
                       ),
                     ],
@@ -149,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge
-                        ?.copyWith(fontWeight: FontWeight.w500, fontSize: 22),
+                        ?.copyWith(fontWeight: FontWeight.w700, fontSize: 22),
                   ),
                 ),
 
@@ -160,18 +153,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 200,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: AppSizes.paddingL),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppSizes.paddingL),
                     children: [
                       ProductCard(
                         imagePath: 'assets/images/food_sanwich_tripple.png',
                         name: AppStrings.tripleSandwich,
                         price: 'S/ 12.90',
                         onTap: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                                builder: (context) => ProductDetailsScreen()),
-                          );
+                          context.push('/product-detail');
                         },
                       ),
                       const SizedBox(width: AppSizes.spaceXL),
@@ -181,10 +171,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         price: 'S/ 6.50',
                         onTap: () {
                           // Navegar a detalle del producto
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                                builder: (context) => HistorialComprasScreen()),
-                          );
+                          context.push('/product-detail');
+                        },
+                      ),
+                      const SizedBox(width: AppSizes.spaceXL),
+                      ProductCard(
+                        imagePath: 'assets/images/food_sanwich_tripple.png',
+                        name: AppStrings.tripleSandwich,
+                        price: 'S/ 12.90',
+                        onTap: () {
+                          context.push('/product-detail');
                         },
                       ),
                     ],
@@ -200,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Text(
                     AppStrings.specialOffers,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w700,
                           fontSize: 22,
                         ),
                   ),
@@ -213,8 +209,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 200,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: AppSizes.paddingL),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppSizes.paddingL),
                     children: [
                       ProductCard(
                         imagePath: 'assets/images/food_sanwich.png',
@@ -222,7 +218,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         price: 'S/ 8.90',
                         discount: AppStrings.discountLabel,
                         onTap: () {
-                          // Navegar a detalle del producto
+                          context.push('/product-detail');
                         },
                       ),
                       const SizedBox(width: AppSizes.spaceM),
@@ -232,20 +228,33 @@ class _HomeScreenState extends State<HomeScreen> {
                         price: 'S/ 3.50',
                         discount: AppStrings.discountLabel,
                         onTap: () {
-                          // Navegar a detalle del producto
+                          context.push('/product-detail');
+                        },
+                      ),
+                      const SizedBox(width: AppSizes.spaceM),
+                      ProductCard(
+                        imagePath: 'assets/images/food_sanwich.png',
+                        name: AppStrings.chickenCroissant,
+                        price: 'S/ 8.90',
+                        discount: AppStrings.discountLabel,
+                        onTap: () {
+                          context.push('/product-detail');
                         },
                       ),
                     ],
                   ),
                 ),
-
-                // Espacio adicional para el scroll
-                const SizedBox(height: AppSizes.spaceXXL),
               ],
             ),
           ),
         ],
       ),
+
+      // FloatingActionButton centrado
+      floatingActionButton: PrimaxLoversButton(
+        onPressed: () {},
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

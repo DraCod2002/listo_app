@@ -17,15 +17,15 @@ class OrderConfirmationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(AppSizes.paddingL),
+      padding: const EdgeInsets.all(AppSizes.paddingM),
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(AppSizes.radiusM),
         boxShadow: [
           BoxShadow(
-            color: AppColors.black.withOpacity(0.08),
+            color: AppColors.black.withOpacity(0.02),
             blurRadius: 8,
-            offset: const Offset(0, 2),
+            offset: const Offset(0, 1),
           ),
         ],
       ),
@@ -36,7 +36,7 @@ class OrderConfirmationCard extends StatelessWidget {
           const Text(
             'Resumen del pedido',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: FontWeight.w600,
               color: AppColors.textPrimary,
             ),
@@ -49,7 +49,7 @@ class OrderConfirmationCard extends StatelessWidget {
           
           // Divider
           Container(
-            margin: const EdgeInsets.symmetric(vertical: AppSizes.spaceM),
+            margin: const EdgeInsets.symmetric(vertical: AppSizes.spaceS),
             height: 1,
             color: AppColors.divider,
           ),
@@ -74,11 +74,12 @@ class OrderConfirmationCard extends StatelessWidget {
                 Text(
                   item.name,
                   style: const TextStyle(
-                    fontSize: 16,
+                    fontSize: 18,
                     fontWeight: FontWeight.w500,
                     color: AppColors.textPrimary,
                   ),
                 ),
+
                 Text(
                   'Cant. ${item.quantity}',
                   style: const TextStyle(
@@ -89,7 +90,7 @@ class OrderConfirmationCard extends StatelessWidget {
               ],
             ),
           ),
-          
+
           // Price
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,

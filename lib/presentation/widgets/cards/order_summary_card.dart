@@ -26,9 +26,9 @@ class OrderSummaryCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSizes.radiusM),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withOpacity(0.02),
             blurRadius: 8,
-            offset: Offset(0, 2),
+            offset: Offset(0, 1),
           ),
         ],
       ),
@@ -38,7 +38,7 @@ class OrderSummaryCard extends StatelessWidget {
          const Text(
             'Resumen del pedido',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 22,
               fontWeight: FontWeight.bold,
               color: AppColors.textPrimary,
             ),
@@ -57,6 +57,7 @@ class OrderSummaryCard extends StatelessWidget {
           _buildSummaryRow(
             'Impuestos',
             'S/ ${taxes.toStringAsFixed(2)}',
+
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: AppSizes.spaceM),
@@ -86,7 +87,7 @@ class OrderSummaryCard extends StatelessWidget {
         Text(
           label,
           style: TextStyle(
-            fontSize: isTotal ? 18 : 16,
+            fontSize: isTotal ? 20 : 16,
             fontWeight: isTotal ? FontWeight.bold : FontWeight.normal,
             color: isTotal ? AppColors.textPrimary : AppColors.textSecondary,
           ),
@@ -94,7 +95,7 @@ class OrderSummaryCard extends StatelessWidget {
         Text(
           value,
           style: TextStyle(
-            fontSize: isTotal ? 18 : 16,
+            fontSize: isTotal ? 20 : 16,
             fontWeight: FontWeight.bold,
             color: isTotal ? AppColors.primary : AppColors.textPrimary,
           ),

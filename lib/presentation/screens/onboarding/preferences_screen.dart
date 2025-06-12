@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:listo_app/presentation/screens/HomeView.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_sizes.dart';
@@ -37,10 +38,7 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => HomeView()),
-              );
+              context.push('/home-view');
             },
             child: const Text('OK'),
           ),
